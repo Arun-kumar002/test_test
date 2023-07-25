@@ -35,8 +35,8 @@ export const signin = async (req, res, next) => {
     console.log(token)
     // Set the token in the 'access_token' cookie and send it to the client
     res.cookie('access_token', token, {
-      httpOnly: true,
-      secure: true, 
+      // httpOnly: true,
+      // secure: true, 
       sameSite: 'None', 
       maxAge: 3600000, 
       path: '/', 
