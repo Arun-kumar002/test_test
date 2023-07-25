@@ -7,7 +7,7 @@ import commentRoutes from "./routes/comments.js";
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
 import cors from 'cors'
-
+import session from "cookie-session";
 
 const app = express();
 dotenv.config();
@@ -26,11 +26,19 @@ const connect = () => {
 //middlewares
 app.use(cookieParser())
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-  ], credentials: true, exposedHeaders: ['SET-COOKIE'],
+  origin: true, credentials: true, exposedHeaders: ['SET-COOKIE'],
 }));
 app.use(express.json());
+
+app.use(
+  session({
+    secret: "dede",
+    sameSite: "none",
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+    secure: false,
+  })
+);
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
