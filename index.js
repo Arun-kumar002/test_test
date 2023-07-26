@@ -24,10 +24,12 @@ const connect = () => {
 };
 
 //middlewares
-app.use(cookieParser())
+app.use(cookieParser());
+
 app.use(cors({
   origin: true, credentials: true, exposedHeaders: ['SET-COOKIE'],
 }));
+
 app.use(express.json());
 
 app.use(

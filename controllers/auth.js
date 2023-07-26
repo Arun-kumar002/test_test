@@ -43,7 +43,7 @@ export const signin = async (req, res, next) => {
     });
 
 
-    res.status(200).json({ message: 'success', });
+    res.status(200).json({ message: 'success', token,userWithoutPassword});
   } catch (err) {
     next(err);
   }
